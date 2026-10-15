@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="es">
+<head>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Kapital Delta",
+  "url": "https://kapitaldelta.netlify.app/"
+}
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kapital Delta Ltda</title>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Kapital_Delta_Triangulo.png">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap">
+<style>
+body{margin:0}
+a{color:#FFFFFF;text-decoration:none}a:hover{color:#00C73C}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+/* Carrusel del hero */
+.kd-hero-stage{display:grid}
+.kd-slide{grid-area:1/1;display:flex;flex-wrap:wrap;gap:48px;align-items:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .6s ease,visibility .6s}
+.kd-slide.is-active{opacity:1;visibility:visible;pointer-events:auto}
+.kd-hero-btn{background:#00C73C;color:#23201F;font-weight:700;font-size:16px;font-family:'Montserrat',sans-serif;padding:16px 28px;border-radius:8px;border:0;cursor:pointer}
+.kd-hero-btn:hover{opacity:.9}
+.kd-arrow{width:44px;height:44px;border-radius:50%;border:1px solid #FFFFFF;background:transparent;color:#FFFFFF;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.kd-arrow:hover{border-color:#00C73C;color:#00C73C}
+.kd-dot{width:12px;height:12px;border-radius:50%;border:1px solid #FFFFFF;background:transparent;cursor:pointer;padding:0}
+.kd-dot.is-active{background:#00C73C;border-color:#00C73C}
+@media (prefers-reduced-motion:reduce){.kd-slide{transition:none}}
+
+/* Botón flotante de WhatsApp */
+.kd-wa{position:fixed;right:20px;bottom:20px;right:calc(20px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));width:60px;height:60px;z-index:9999;display:block;border-radius:50%;filter:drop-shadow(0 4px 10px rgba(0,0,0,.45));transition:transform .2s ease}
+.kd-wa:hover{transform:scale(1.08)}
+.kd-wa img{width:100%;height:100%;display:block}
+
+/* Equipo */
+.kd-team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:24px}
+.kd-member{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;background:#3E3E3E;border:1px solid #3F3F3F;border-radius:16px;padding:32px 20px 28px;overflow:hidden;transition:transform .25s ease,border-color .25s ease}
+.kd-member::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:#00C73C;transform:scaleX(0);transform-origin:center;transition:transform .3s ease}
+.kd-member:hover{transform:translateY(-6px);border-color:#00C73C}
+.kd-member:hover::before{transform:scaleX(1)}
+.kd-photo{width:112px;height:112px;border-radius:50%;overflow:hidden;margin-bottom:20px;border:3px solid #00C73C;padding:3px;box-sizing:border-box;background:#23201F}
+.kd-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%;display:block}
+.kd-name{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;line-height:1.35;color:#FFFFFF;letter-spacing:.3px;min-height:2.7em;display:flex;align-items:center;justify-content:center}
+.kd-divider{width:32px;height:2px;background:#00C73C;margin:12px 0;border-radius:2px}
+.kd-amv{margin-top:10px;display:inline-block;padding:5px 12px;border-radius:999px;background:rgba(0,199,60,.14);border:1px solid rgba(0,199,60,.55);font-size:11.5px;font-weight:700;color:#FFFFFF;letter-spacing:.3px;line-height:1.3}
+.kd-email{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);width:100%;box-sizing:border-box;font-size:12px;font-weight:500;color:rgba(255,255,255,.82);overflow-wrap:anywhere;line-height:1.4;transition:color .25s ease}
+.kd-member:hover .kd-email{color:#00C73C}
+.kd-role{font-size:13px;font-weight:500;color:#00C73C;line-height:1.4}
+@media (max-width:520px){
+.kd-team-grid{grid-template-columns:repeat(2,1fr);gap:16px}
+.kd-member{padding:24px 12px 20px}
+.kd-photo{width:88px;height:88px;margin-bottom:16px}
+.kd-name{font-size:13px}
+.kd-role{font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){.kd-member,.kd-member::before{transition:none}.kd-member:hover{transform:none}}
+
+/* ===== MEJORAS VISUALES ===== */
+body{font-family:'Montserrat',sans-serif;text-rendering:optimizeLegibility}
+section[id]{scroll-margin-top:24px}
+::selection{background:#00C73C;color:#23201F}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #00C73C!important;outline-offset:3px;border-radius:6px}
+h1,h2,h3{letter-spacing:-.02em;text-wrap:balance}
+h1{line-height:1.05!important}
+p{text-wrap:pretty}
+section p[style*="letter-spacing:2px"]{display:flex;align-items:center;gap:12px}
+section p[style*="letter-spacing:2px"]::before{content:"";width:28px;height:2px;background:#00C73C;border-radius:2px;flex:none}
+nav a:not([href="#contacto"]){position:relative;padding:6px 0;transition:color .25s ease}
+nav a:not([href="#contacto"])::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:2px;background:#00C73C;transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+nav a:not([href="#contacto"]):hover::after{transform:scaleX(1)}
+nav a[href="#contacto"]{transition:transform .25s ease,box-shadow .25s ease}
+nav a[href="#contacto"]:hover{color:#23201F;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,199,60,.35)}
+.kd-hero-btn{transition:transform .25s ease,box-shadow .25s ease,opacity .25s ease;box-shadow:0 6px 20px rgba(0,199,60,.25)}
+.kd-hero-btn:hover{opacity:1;transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,199,60,.4)}
+.kd-hero-btn:active{transform:translateY(0)}
+.kd-slide>div:last-child{box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 6px rgba(0,199,60,.08);transform:translateY(12px) scale(.98);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.kd-slide.is-active>div:last-child{transform:none}
+.kd-slide>div:last-child img{transition:transform 6s ease}
+.kd-slide.is-active>div:last-child img{transform:scale(1.06)}
+.kd-arrow{transition:all .25s ease}
+.kd-arrow:hover{background:#00C73C;color:#23201F;transform:scale(1.08)}
+.kd-dot{transition:all .3s ease}
+.kd-dot.is-active{width:32px;border-radius:6px}
+#simulador>div{box-shadow:0 30px 70px rgba(0,0,0,.4)}
+#simulador>div>div:last-child{box-shadow:inset 0 0 0 1px rgba(0,199,60,.15),0 12px 40px rgba(0,0,0,.35)}
+#simulador input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;cursor:pointer}
+#simulador input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:#FFFFFF}
+#simulador input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:#FFFFFF}
+#simulador input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#00C73C;border:3px solid #23201F;margin-top:-8px;box-shadow:0 0 0 3px rgba(0,199,60,.35);transition:transform .2s ease}
+#simulador input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#00C73C;border:3px solid #23201F;box-shadow:0 0 0 3px rgba(0,199,60,.35)}
+#simulador input[type=range]:hover::-webkit-slider-thumb{transform:scale(1.15)}
+#sim-bar{transition:width .35s ease}
+section[style*="border-top:1px solid #FFFFFF;border-bottom"]>div{position:relative;padding-left:20px}
+section[style*="border-top:1px solid #FFFFFF;border-bottom"]>div::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:3px;background:#00C73C}
+#servicios>div>div,#trabaja>div>div{position:relative;overflow:hidden;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+#servicios>div>div::before,#trabaja>div>div::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:#00C73C;transform:scaleX(0);transform-origin:left;transition:transform .35s ease}
+#servicios>div>div:hover,#trabaja>div>div:hover{transform:translateY(-6px);border-color:#00C73C!important;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+#servicios>div>div:hover::before,#trabaja>div>div:hover::before{transform:scaleX(1)}
+#servicios>div>div>svg{padding:12px;box-sizing:content-box;border-radius:14px;background:rgba(0,199,60,.1);transition:transform .3s ease}
+#servicios>div>div:hover>svg{transform:scale(1.08) rotate(-4deg)}
+.kd-member:hover{box-shadow:0 18px 40px rgba(0,0,0,.4)}
+.kd-photo{transition:box-shadow .3s ease}
+.kd-member:hover .kd-photo{box-shadow:0 0 0 6px rgba(0,199,60,.18)}
+#contacto{box-shadow:0 30px 70px rgba(0,0,0,.35);position:relative;overflow:hidden}
+#contacto::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#00C73C}
+footer{letter-spacing:.2px}
+.kd-wa::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 rgba(0,199,60,.55);animation:kd-pulse 2.4s ease-out infinite;pointer-events:none}
+@keyframes kd-pulse{to{box-shadow:0 0 0 20px rgba(0,199,60,0)}}
+.kd-js .kd-reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.kd-js .kd-reveal.is-in{opacity:1;transform:none}
+@media (max-width:640px){
+h1{font-size:38px!important}
+.kd-slide h2{font-size:34px!important}
+section h2{font-size:30px!important}
+}
+@media (prefers-reduced-motion:reduce){
+.kd-wa::after{animation:none}
+.kd-js .kd-reveal{opacity:1;transform:none;transition:none}
+.kd-slide>div:last-child,.kd-slide>div:last-child img{transition:none;transform:none!important}
+}
+
+/* Diagnóstico Financiero */
+#diagnostico{scroll-margin-top:16px}
+.kd-dx-card{background:#3E3E3E;border:1px solid #FFFFFF;border-radius:20px;padding:40px;box-sizing:border-box}
+.kd-dx-eyebrow{margin:0 0 12px;color:#00C73C;font-weight:700;letter-spacing:2px;font-size:13px}
+.kd-dx h2,.kd-dx h3{font-family:'Montserrat',sans-serif;line-height:1.2;margin:0}
+.kd-dx h2{font-size:36px;margin-bottom:16px}
+.kd-dx p{margin:0 0 16px}
+.kd-dx-btn{background:#00C73C;color:#23201F;font-weight:700;font-size:16px;font-family:'Montserrat',sans-serif;padding:16px 28px;border-radius:8px;border:0;cursor:pointer;text-decoration:none;display:inline-block;text-align:center}
+.kd-dx-btn:hover{opacity:.9;color:#23201F}
+.kd-dx-ghost{background:transparent;color:#FFFFFF;border:1px solid #FFFFFF;font-family:'Montserrat',sans-serif;font-weight:500;font-size:14px;padding:12px 20px;border-radius:8px;cursor:pointer}
+.kd-dx-ghost:hover:not(:disabled){border-color:#00C73C;color:#00C73C}
+.kd-dx-ghost:disabled{opacity:.35;cursor:default}
+.kd-dx-grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0 32px}
+.kd-dx-pill{border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:20px;background:rgba(0,0,0,.18)}
+.kd-dx-pill b{display:block;font-family:'Montserrat',sans-serif;font-size:17px;margin-bottom:6px}
+.kd-dx-bar{height:8px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden;margin:0 0 28px}
+.kd-dx-bar>i{display:block;height:100%;width:0;background:#00C73C;transition:width .4s ease}
+.kd-dx-opt{display:block;width:100%;text-align:left;background:transparent;color:#FFFFFF;border:1px solid #FFFFFF;border-radius:12px;padding:16px 18px;margin:0 0 12px;font-family:inherit;font-size:16px;cursor:pointer;min-height:44px;transition:border-color .2s,background .2s}
+.kd-dx-opt:hover,.kd-dx-opt:focus-visible{border-color:#00C73C;background:rgba(0,199,60,.1)}
+.kd-dx-opt.is-sel{border-color:#00C73C;background:rgba(0,199,60,.18)}
+.kd-dx-opt b{color:#00C73C;margin-right:8px}
+.kd-dx-hint{color:#FFFFFF;opacity:.8;font-size:14px;margin:-4px 0 20px!important}
+.kd-dx-light{width:96px;height:96px;border-radius:50%;margin:0 0 20px;box-shadow:0 0 0 8px rgba(255,255,255,.08),0 0 40px var(--c)}
+.kd-dx-score{font-weight:700;font-size:15px;margin:0 0 20px!important}
+.kd-dx-hl{border-left:4px solid var(--c);padding:4px 0 4px 16px;font-weight:700;font-size:18px;margin:24px 0!important}
+.kd-dx-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:24px 0}
+.kd-dx-col{border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:20px;background:rgba(0,0,0,.18)}
+.kd-dx-col h3{font-size:16px;margin-bottom:12px}
+.kd-dx-col ul{margin:0;padding:0;list-style:none}
+.kd-dx-col li{margin:0 0 12px;font-size:14px}
+.kd-dx-col li:last-child{margin:0}
+.kd-dx-mini{height:6px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden;margin-top:6px}
+.kd-dx-mini>i{display:block;height:100%}
+.kd-dx-legal{margin-top:28px!important;padding-top:20px;border-top:1px solid rgba(255,255,255,.35);font-size:13px;opacity:.85}
+.kd-dx [hidden]{display:none!important}
+@media (max-width:640px){.kd-dx-card{padding:24px}.kd-dx h2{font-size:28px!important}}
+
+/* Quiénes somos: misión, visión y por qué elegirnos */
+.kd-nos-wrap{flex:1 1 100%;margin-top:8px}
+.kd-nos-mv{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.kd-nos-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#3E3E3E 0%,#2B2928 100%);border:1px solid #FFFFFF;border-radius:20px;padding:36px;box-sizing:border-box;transition:transform .25s ease,border-color .25s ease}
+.kd-nos-card:hover{transform:translateY(-4px);border-color:#00C73C}
+.kd-nos-card:before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:#00C73C}
+.kd-nos-ico{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;background:rgba(0,199,60,.14);border:1px solid rgba(0,199,60,.55);margin-bottom:20px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:22px;color:#00C73C}
+.kd-nos-ico.is-emoji{font-size:26px}
+.kd-nos-card h3{margin:0 0 8px;font-family:'Montserrat',sans-serif;font-size:26px;line-height:1.2;color:#FFFFFF}
+.kd-nos-line{width:48px;height:3px;border-radius:99px;background:#00C73C;margin:0 0 16px}
+.kd-nos-card p{margin:0;color:#FFFFFF;font-size:17px;line-height:1.6}
+.kd-nos-why{margin-top:56px}
+.kd-nos-why h3{margin:0 0 28px;font-family:'Montserrat',sans-serif;font-size:32px;line-height:1.2;color:#FFFFFF}
+.kd-nos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.kd-nos-grid .kd-nos-card{padding:28px}
+.kd-nos-grid .kd-nos-card h4{margin:0 0 10px;font-family:'Montserrat',sans-serif;font-size:18px;line-height:1.3;color:#FFFFFF}
+.kd-nos-grid .kd-nos-card p{font-size:15px}
+@media (max-width:640px){.kd-nos-card{padding:28px}.kd-nos-why h3{font-size:26px}}
+
+/* Formulario de contacto del diagnóstico */
+.kd-dx-form{margin:24px 0 0}
+.kd-dx-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 16px}
+.kd-dx-field{display:flex;flex-direction:column;min-width:0}
+.kd-dx-field>label{font-size:14px;margin:0 0 6px;color:#FFFFFF}
+.kd-dx-in{width:100%;box-sizing:border-box;height:56px;background:transparent;color:#FFFFFF;border:1px solid rgba(255,255,255,.55);border-radius:14px;padding:0 20px;font-family:inherit;font-size:16px;transition:border-color .2s,box-shadow .2s}
+.kd-dx-in::placeholder{color:rgba(255,255,255,.7)}
+.kd-dx-in:focus{outline:none;border-color:#00C73C;box-shadow:0 0 0 3px rgba(0,199,60,.2)}
+.kd-dx-in.is-bad{border-color:#E5484D}
+.kd-dx-robot{display:inline-flex;align-items:center;gap:14px;border:1px solid rgba(255,255,255,.55);border-radius:12px;padding:16px 22px;background:rgba(0,0,0,.18);cursor:pointer;user-select:none;margin:8px 0 20px}
+.kd-dx-robot input{position:absolute;opacity:0;pointer-events:none}
+.kd-dx-box{width:28px;height:28px;border:2px solid #FFFFFF;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#23201F;font-weight:700;transition:background .2s,border-color .2s}
+.kd-dx-robot input:checked+.kd-dx-box{background:#00C73C;border-color:#00C73C}
+.kd-dx-robot input:checked+.kd-dx-box:after{content:"✓"}
+.kd-dx-robot input:focus-visible+.kd-dx-box{box-shadow:0 0 0 3px rgba(0,199,60,.4)}
+.kd-dx-robot.is-bad{border-color:#E5484D}
+.kd-dx-auth{font-size:14px;text-align:center;max-width:560px;margin:0 auto 20px!important}
+.kd-dx-auth a{color:#00C73C;font-weight:700;text-decoration:underline}
+.kd-dx-err{color:#FF8A8E;font-size:14px;min-height:20px;margin:0 0 12px!important;text-align:center}
+.kd-dx-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.kd-dx-btn:disabled{opacity:.6;cursor:wait}
+@media (max-width:640px){.kd-dx-row{grid-template-columns:1fr}}
+
+/* Texto justificado */
+p,li,footer,body>div>div:first-child,.kd-role,.kd-email,.kd-amv,.kd-dx-opt,.kd-dx-pill b{text-align:justify!important}
+/* Sin justificar: "Por qué elegirnos" */
+.kd-nos-why,.kd-nos-why *{text-align:start!important}
+/* Los bloques que estaban centrados mantienen centrada su última línea */
+body>div>div:first-child,footer,.kd-member *,.kd-dx-auth,.kd-dx-err,#dx-thanks *{text-align-last:center}
+</style>
+
+</head>
+<body>
+
+
+<div style="width:100%;background:#23201F;color:#FFFFFF;font-family:'Montserrat',sans-serif;line-height:1.6">
+
+<div style="background:#00C73C;color:#23201F;padding:12px 24px;text-align:center;font-size:14px;font-weight:700">
+Aviso importante: Kapital Delta Ltda no es una entidad de captación de dinero. Todas nuestras asesorías son completamente gratuitas y ninguno de nuestros representantes le solicitará dinero, depósitos, claves o códigos. Evite el fraude
+</div>
+
+<!-- Barra de indicadores con fondo exacto #3F3F3F, cotizaciones reales y bloqueo de clics hacia TradingView -->
+<div style="background:#3F3F3F;border-bottom:1px solid #FFFFFF;padding:4px 0;position:relative;">
+  <!-- Capa invisible para bloquear clics hacia TradingView -->
+  <div style="position:absolute;inset:0;z-index:10;cursor:default;"></div>
+  
+  <div class="tradingview-widget-container" style="pointer-events:none;">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [
+        {
+          "proName": "NASDAQ:IXIC",
+          "title": "Nasdaq"
+        },
+        {
+          "proName": "FOREXCOM:SPXUSD",
+          "title": "S&P 500"
+        },
+        {
+          "proName": "FOREXCOM:DJI",
+          "title": "Dow Jones"
+        },
+        {
+          "proName": "FX_IDC:EURUSD",
+          "title": "EUR/USD"
+        },
+        {
+          "proName": "FX:USDCOP",
+          "title": "USD/COP"
+        }
+      ],
+      "showSymbolLogo": true,
+      "isTransparent": true,
+      "displayMode": "adaptive",
+      "colorTheme": "dark",
+      "locale": "es"
+    }
+    </script>
+  </div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 24px;box-sizing:border-box">
+
+<header style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding:24px 0">
+<div style="display:flex; align-items:center;">
+<img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Kapital_Delta_Logo.png" alt="Kapital Delta" style="height:36px; width:auto; object-fit:contain;">
+</div>
+<nav style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;font-size:15px">
+<a href="#nosotros">Quiénes somos</a>
+<a href="#equipo">Equipo</a>
+<a href="#servicios">Servicios</a>
+<a href="#diagnostico">Diagnóstico</a>
+<a href="#simulador">Simulador</a>
+<a href="https://portal.skandia.com.co/om.rentabilidades.pl/oldmutual" target="_blank" rel="noopener noreferrer">Rentabilidad</a>
+<a href="#trabaja">Trabaja con nosotros</a>
+<a href="#contacto" style="background:#00C73C;color:#23201F;font-weight:700;padding:12px 20px;border-radius:8px;min-height:20px">Contáctenos</a>
+</nav>
+</header>
+
+<!-- HERO: carrusel de 3 elementos -->
+<section id="kd-hero" style="padding:72px 0 88px" aria-roledescription="carrusel" aria-label="Destacados">
+<div class="kd-hero-stage" aria-live="off">
+
+<div class="kd-slide is-active" role="group" aria-roledescription="diapositiva" aria-label="1 de 3">
+<div style="flex:1 1 440px">
+<p style="margin:0 0 16px;color:#00C73C;font-weight:700;letter-spacing:2px;font-size:13px">REFORMA PENSIONAL</p>
+<h1 style="margin:0 0 24px;font-family:'Montserrat',sans-serif;font-size:56px;line-height:1.1">¿Sabes qué pasará con tu dinero?</h1>
+<p style="margin:0 0 36px;color:#FFFFFF;font-size:18px;max-width:520px">El nuevo sistema transformará por completo la manera en que construyes tu vejez. Descubre con total certeza bajo qué condiciones te vas a jubilar y protege tu patrimonio.</p>
+<a href="https://api.whatsapp.com/send?phone=573173735913&text=Hola%20An%C3%ADbal%2C%20quiero%20recibir%20asesor%C3%ADa%20sobre%20la%20reforma%20pensional.%20%E2%9A%96%EF%B8%8F%F0%9F%87%A8%F0%9F%87%B4" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button type="button" class="kd-hero-btn">Solicita asesoría gratuita</button></a>
+</div>
+<div style="flex:1 1 360px;background:#3E3E3E;border:1px solid #FFFFFF;border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-sizing:border-box">
+<img src="https://images.pexels.com/photos/18999538/pexels-photo-18999538.jpeg" alt="Tranquilidad para el manejo de su capital" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+</div>
+<div class="kd-slide" role="group" aria-roledescription="diapositiva" aria-label="2 de 3">
+<div style="flex:1 1 440px">
+<p style="margin:0 0 16px;color:#00C73C;font-weight:700;letter-spacing:2px;font-size:13px">EDUCACION Y FUTURO</p>
+<h2 style="margin:0 0 24px;font-family:'Montserrat',sans-serif;font-size:56px;line-height:1.1">El futuro de su educación empieza con las decisiones que tomas hoy</h2>
+<p style="margin:0 0 36px;color:#FFFFFF;font-size:18px;max-width:520px">Asegura los fondos para su universidad sin importar lo que pase mañana. Construye desde ya el camino hacia su carrera profesional.</p>
+<a href="https://api.whatsapp.com/send?phone=573173735913&text=Hola%20An%C3%ADbal%2C%20quiero%20recibir%20asesor%C3%ADa%20para%20asegurar%20la%20universidad%20de%20mi%20hijo.%20%F0%9F%91%A6%F0%9F%8E%93" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button type="button" class="kd-hero-btn">Quiero asegurar su universidad</button></a>
+</div>
+<div style="flex:1 1 360px;background:#3E3E3E;border:1px solid #FFFFFF;border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-sizing:border-box">
+<img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/81112d7b-e973-4da7-bf67-d80f07de2eb9.png" alt="Ahorro e inversión" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+</div>
+<div class="kd-slide" role="group" aria-roledescription="diapositiva" aria-label="3 de 3">
+<div style="flex:1 1 440px">
+<p style="margin:0 0 16px;color:#00C73C;font-weight:700;letter-spacing:2px;font-size:13px">INVERSIONES</p>
+<h2 style="margin:0 0 24px;font-family:'Montserrat',sans-serif;font-size:56px;line-height:1.1">Haz que tu dinero trabaje para ti mientras construyes tu futuro</h2>
+<p style="margin:0 0 36px;color:#FFFFFF;font-size:18px;max-width:520px">No dejes que tus ahorros pierdan valor por la inflación. Descubre opciones de inversión seguras, rentables y adaptadas a tus metas.</p>
+<a href="https://api.whatsapp.com/send?phone=573173735913&text=Hola%20An%C3%ADbal%2C%20quiero%20recibir%20asesor%C3%ADa%20para%20empezar%20a%20invertir%20mi%20dinero.%20%F0%9F%93%88%F0%9F%92%BC" target="_blank" rel="noopener noreferrer" style="text-decoration: none;"><button type="button" class="kd-hero-btn">Empieza a invertir hoy</button></a>
+</div>
+<div style="flex:1 1 360px;background:#3E3E3E;border:1px solid #FFFFFF;border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-sizing:border-box">
+<img src="https://images.pexels.com/photos/1268855/pexels-photo-1268855.jpeg" alt="Retiro y jubilación" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+</div>
+
+</div>
+
+<!-- Controles -->
+<div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-top:40px">
+<button type="button" class="kd-arrow" id="kd-prev" aria-label="Anterior">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+</button>
+<div style="display:flex;gap:10px;align-items:center" id="kd-dots">
+<button type="button" class="kd-dot is-active" aria-label="Ir a la diapositiva 1"></button>
+<button type="button" class="kd-dot" aria-label="Ir a la diapositiva 2"></button>
+<button type="button" class="kd-dot" aria-label="Ir a la diapositiva 3"></button>
+</div>
+<button type="button" class="kd-arrow" id="kd-next" aria-label="Siguiente">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+</button>
+</div>
+</section>
+
+<section id="simulador" style="padding:0 0 88px">
+<div style="background:#3E3E3E;border:1px solid #FFFFFF;border-radius:20px;padding:40px;display:flex;flex-wrap:wrap;gap:48px;box-sizing:border-box">
+<div style="flex:1 1 380px">
+<p style="margin:0 0 12px;color:#00C73C;font-weight:700;letter-spacing:2px;font-size:13px">SIMULADOR</p>
+<h2 style="margin:0 0 12px;font-family:'Montserrat',sans-serif;font-size:36px;line-height:1.2">Simule su inversión</h2>
+<p style="margin:0 0 32px;color:#FFFFFF">Ajuste los valores y vea una proyección ilustrativa de su capital.</p>
+<div style="margin-bottom:24px">
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:6px"><label for="sim-inicial" style="color:#FFFFFF">Inversión inicial</label><span style="font-weight:700"><span data-bind="amountLabel"></span></span></div>
+<input id="sim-inicial" type="range" min="0" max="1000" step="1" style="width:100%;min-height:44px;accent-color:#00C73C;margin:0">
+</div>
+<div style="margin-bottom:24px">
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:6px"><label for="sim-mensual" style="color:#FFFFFF">Aporte mensual</label><span style="font-weight:700"><span data-bind="monthlyLabel"></span></span></div>
+<input id="sim-mensual" type="range" min="0" max="1000" step="1" style="width:100%;min-height:44px;accent-color:#00C73C;margin:0">
+</div>
+<div style="margin-bottom:24px">
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:6px"><label for="sim-plazo" style="color:#FFFFFF">Plazo</label><span style="font-weight:700"><span data-bind="yearsLabel"></span></span></div>
+<input id="sim-plazo" type="range" min="0" max="30" step="1" style="width:100%;min-height:44px;accent-color:#00C73C;margin:0">
+</div>
+<div style="margin-bottom:24px">
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:6px"><label for="sim-tasa" style="color:#FFFFFF">Rentabilidad anual supuesta</label><span style="font-weight:700"><span data-bind="rateLabel"></span></span></div>
+<input id="sim-tasa" type="range" min="0" max="20" step="0.5" style="width:100%;min-height:44px;accent-color:#00C73C;margin:0">
+</div>
+</div>
+<div style="flex:1 1 320px;background:#23201F;border:1px solid #FFFFFF;border-radius:16px;padding:32px;box-sizing:border-box;align-self:stretch;display:flex;flex-direction:column;justify-content:center">
+<div style="color:#FFFFFF;font-size:14px">Valor estimado al final del plazo</div>
+<div style="margin:8px 0 24px;font-family:'Montserrat',sans-serif;font-size:44px;font-weight:700;color:#00C73C;line-height:1.1;overflow-wrap:anywhere"><span data-bind="finalLabel"></span></div>
+<div style="display:flex;height:12px;border-radius:6px;overflow:hidden;background:#FFFFFF;margin-bottom:16px" aria-hidden="true"><div id="sim-bar" style="background:#FFFFFF;width:50%"></div><div style="background:#00C73C;flex:1"></div></div>
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:8px"><span style="color:#FFFFFF">Total aportado</span><span style="font-weight:700"><span data-bind="investedLabel"></span></span></div>
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px"><span style="color:#FFFFFF">Ganancia estimada</span><span style="font-weight:700;color:#00C73C"><span data-bind="gainLabel"></span></span></div>
+<p style="margin:24px 0 0;color:#FFFFFF;font-size:12px">Simulación ilustrativa con tasa hipotética. No es una oferta vinculante ni garantiza rendimientos. Los resultados reales pueden variar y existe riesgo de pérdida de capital.</p>
+</div>
+</div>
+</section>
+
+<section style="display:flex;flex-wrap:wrap;gap:24px;border-top:1px solid #FFFFFF;border-bottom:1px solid #FFFFFF;padding:40px 0">
+<div style="flex:1 1 200px"><div style="font-family:'Montserrat',sans-serif;font-size:44px;font-weight:700;color:#00C73C">+10 años</div><div style="color:#FFFFFF">trayectoria en el mercado</div></div>
+<div style="flex:1 1 200px"><div style="font-family:'Montserrat',sans-serif;font-size:44px;font-weight:700">+6.300</div><div style="color:#FFFFFF">clientes que confían en nosotros</div></div>
+<div style="flex:1 1 200px"><div style="font-family:'Montserrat',sans-serif;font-size:44px;font-weight:700">+780.000 mill.</div><div style="color:#FFFFFF">administración de activos</div></div>
+</section>
+
+<section id="nosotros" style="display:flex;flex-wrap:wrap;gap:48px;padding:96px 0">
+<div style="flex:1 1 320px">
+<p style="margin:0 0 12px;color:#00C73C;font-weight:700;letter-spacing:2px;font-size:13px">QUIÉNES SOMOS</p>
+<h2 style="margin:0;font-family:'Montserrat',sans-serif;font-size:40px;line-height:1.2">+10 años construyendo confianza</h2>
+</div>
+<div style="flex:1 1 400px;color:#FFFFFF;font-size:17px">
+<p style="margin:0 0 20px">En Kapital Delta somos una Agencia Máster de Skandia fundada en 2016. Con más de 10 años de trayectoria en el mercado financiero, nos apasiona acompañar a las personas a diseñar, construir y hacer realidad sus metas financieras y proyectos de vida.</p>
+<p style="margin:0">Combinamos el respaldo y la infraestructura global de Skandia con el conocimiento de nuestro equipo de Financial Planners, 100% certificados ante la AMV. El resultado: estrategias a la medida que transforman el ahorro y la inversión en un futuro seguro para ti y tu familia.</p>
+</div>
+<div class="kd-nos-wrap">
+<div class="kd-nos-mv">
+<div class="kd-nos-card">
+<div class="kd-nos-ico is-emoji">🎯</div>
+<h3>Nuestra Misión</h3>
+<div class="kd-nos-line"></div>
+<p>Guiar a nuestros clientes en cada etapa de su vida a través de herramientas de planeación, ahorro e inversión, facilitando las decisiones correctas para que alcancen su libertad financiera y cumplan sus sueños.</p>
+</div>
+<div class="kd-nos-card">
+<div class="kd-nos-ico is-emoji">🔭</div>
+<h3>Nuestra Visión</h3>
+<div class="kd-nos-line"></div>
+<p>Consolidarnos como la agencia de Skandia referente en el país, destacada por la excelencia de nuestro equipo consultor, la fidelidad de nuestros clientes y el impacto positivo en sus finanzas personales.</p>
+</div>
+</div>
+<div class="kd-nos-why">
+<h3>¿Por qué elegirnos?</h3>
+<div class="kd-nos-grid">
+<div class="kd-nos-card"><div class="kd-nos-ico is-emoji">🛡️</div><h4>Asesoría experta y regulada</h4><p>Financial Planners certificados ante la AMV que garantizan transparencia, idoneidad y respaldo legal.</p></div>
+<div class="kd-nos-card"><div class="kd-nos-ico is-emoji">🌎</div><h4>Respaldo global</h4><p>Contamos con la infraestructura y solidez de Skandia.</p></div>
+<div class="kd-nos-card"><div class="kd-nos-ico is-emoji">🧩</div><h4>Estrategias a la medida</h4><p>Diseñamos planes únicos para tus metas reales.</p></div>
+<div class="kd-nos-card"><div class="kd-nos-ico">+10</div><h4>Más de 10 años de experiencia</h4><p>Más de una década transformando y asegurando el futuro financiero de las personas.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="equipo" style="padding:0 0 96px">
+<p style="margin:0 0 12px;color:#00C73C;font-weight:700;letter-spacing:2px;font-size:13px">EQUIPO</p>
+<h2 style="margin:0 0 40px;font-family:'Montserrat',sans-serif;font-size:40px;line-height:1.2">Nuestro equipo</h2>
+<div class="kd-team-grid">
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Anibal.jpg" alt="ANIBAL SALAS CALDAS"></div>
+  <div class="kd-name">ANÍBAL SALAS</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Socio - Financial Planner</div>
+  <div class="kd-amv">✅ Certificado AMV</div>
+  <div class="kd-email">asalas@fp.skandia.com.co</div>
+</div>
+
+  <div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Camilo_Pardo.png" alt="CAMILO F. PARDO CARVAJAL"></div>
+  <div class="kd-name">CAMILO PARDO</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Socio - Financial Planner</div>
+  <div class="kd-amv">✅ Certificado AMV</div>
+  <div class="kd-email">cpardo@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Cristian_Bello.png" alt="CRISTIAN M. BELLO RANGEL"></div>
+  <div class="kd-name">CRISTIAN BELLO</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Socio - Asesor Pensional</div>
+  <div class="kd-email">cbello@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Rudy.jpeg" alt="RUDY L. ZAMBRANO PAEZ"></div>
+  <div class="kd-name">RUDY ZAMBRANO</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Asesora Pensional</div>
+  <div class="kd-email">rzambrano@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Luz_Marina.png" alt="LUZ M. CRUZ CERON"></div>
+  <div class="kd-name">LUZ MARINA CRUZ</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Financial Planner</div>
+  <div class="kd-amv">✅ Certificado AMV</div>
+  <div class="kd-email">lcruz@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Ivonn.png" alt="IVONN M. JURADO BUSTOS"></div>
+  <div class="kd-name">IVONN JURADO</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Asesora Pensional</div>
+  <div class="kd-email">ijurado@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Cindy.png" alt="CINDY L. CAMARGO NIÑO"></div>
+  <div class="kd-name">CINDY LIZETH CAMARGO</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Asistente Operativa</div>
+  <div class="kd-email">ccamargo@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/AiFer.jpeg" alt="AIDA F. SUAREZ CONTRERAS"></div>
+  <div class="kd-name">FERNANDA SUAREZ</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Financial Planner</div>
+  <div class="kd-amv">✅ Certificado AMV</div>
+  <div class="kd-email">afsuarez@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Hassan.png" alt="HASSAN AMED SUDGE"></div>
+  <div class="kd-name">HASSAN AMED SUDGE</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Asesor Pensional</div>
+  <div class="kd-email">hsugve@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Juan_Padilla.png" alt="JUAN C. PADILLA RODRIGUEZ"></div>
+  <div class="kd-name">JUAN CARLOS PADILLA</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Financial Planner</div>
+  <div class="kd-amv">✅ Certificado AMV</div>
+  <div class="kd-email">jpadilla@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Vicky.jpg" alt="VICKY RUIZ NARVAEZ"></div>
+  <div class="kd-name">VICKY RUIZ</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Financial Planner</div>
+  <div class="kd-amv">✅ Certificado AMV</div>
+  <div class="kd-email">vruiz@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/John_Alex.png" alt="JOHN A. MORENO MEJIA"></div>
+  <div class="kd-name">JOHN ALEXANDER MORENO</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Financial Planner</div>
+  <div class="kd-amv">✅ Certificado AMV</div>
+  <div class="kd-email">jamoreno@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/James_Chavez.png" alt="JAMES CHAVEZ ANZOLA"></div>
+  <div class="kd-name">JAMES CHAVEZ</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Financial Planner</div>
+  <div class="kd-amv">✅ Certificado AMV</div>
+  <div class="kd-email">jchaves@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Diana_Jimenez.png" alt="DIANA JIMENEZ CARVAJAL"></div>
+  <div class="kd-name">DIANA JIMENEZ</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Financial Planner</div>
+  <div class="kd-amv">✅ Certificado AMV</div>
+  <div class="kd-email">dajimenez@fp.skandia.com.co</div>
+</div>
+
+<div class="kd-member">
+  <div class="kd-photo"><img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/CaAr.jpg" alt="CARLOS A. TRIANA QUIMBAYO"></div>
+  <div class="kd-name">CARLOS TRIANA</div>
+  <div class="kd-divider"></div>
+  <div class="kd-role">Financial Planner</div>
+  <div class="kd-amv">✅ Certificado AMV</div>
+  <div class="kd-email">catriana@fp.skandia.com.co</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="servicios" style="padding:0 0 96px">
+<p style="margin:0 0 12px;color:#00C73C;font-weight:700;letter-spacing:2px;font-size:13px">SERVICIOS</p>
+<h2 style="margin:0 0 40px;font-family:'Montserrat',sans-serif;font-size:40px;line-height:1.2">Gestión financiera a su medida</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+<div style="background:#3E3E3E;border:1px solid #FFFFFF;border-radius:16px;padding:32px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00C73C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+<h3 style="margin:20px 0 8px;font-family:'Montserrat',sans-serif;font-size:20px">Ahorro e Inversión</h3>
+<p style="margin:0;color:#FFFFFF">Multiplica tu capital con portafolios globales y Fondos de Inversión Colectiva (FICs) diseñados a la medida de tu perfil de riesgo.</p>
+</div>
+<div style="background:#3E3E3E;border:1px solid #FFFFFF;border-radius:16px;padding:32px">
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="#00C73C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="22" cy="9" r="4"/><line x1="22" y1="1" x2="22" y2="2"/><line x1="15.1" y1="5" x2="15.9" y2="5.5"/><line x1="28.9" y1="13" x2="28.1" y2="12.5"/><line x1="28.9" y1="5" x2="28.1" y2="5.5"/><line x1="1" y1="23" x2="31" y2="23"/><line x1="5" y1="27" x2="27" y2="27"/><line x1="10" y1="31" x2="22" y2="31"/><path d="M4,23l11-8l6,2c1.3,2.6,3.5,4.6,6.2,5.7L28,23"/></svg>
+<h3 style="margin:20px 0 8px;font-family:'Montserrat',sans-serif;font-size:20px">Retiro y Jubilación</h3>
+<p style="margin:0;color:#FFFFFF">Construye tu libertad financiera del mañana con planes pensionales voluntarios que aseguran tu tranquilidad y calidad de vida.</p>
+</div>
+<div style="background:#3E3E3E;border:1px solid #FFFFFF;border-radius:16px;padding:32px">
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00C73C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+<h3 style="margin:20px 0 8px;font-family:'Montserrat',sans-serif;font-size:20px">Protección Patrimonial</h3>
+<p style="margin:0;color:#FFFFFF">Protege a los tuyos y blinda tu patrimonio con seguros de vida que combinan protección, ahorro estratégico e inversión.</p>
+</div>
+<div style="background:#3E3E3E;border:1px solid #FFFFFF;border-radius:16px;padding:32px">
+<svg width="32" height="32" viewBox="0 0 1024 1024" fill="#00C73C" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M580.531582 959.931224c-0.489075-0.489075-0.978149-1.100418-1.467224-1.589493-7.458388-1.467224-12.960478-7.580657-13.816358-15.283582-25.309612-30.200358-42.427224-64.802388-51.719642-101.116179h-59.911642c-9.903761 0-17.606687 7.825194-17.606686 17.606687v81.553194c0 9.903761-7.825194 17.606687-17.606687 17.606686h-61.134328c-9.903761 0-17.606687-7.825194-17.606687-17.606686V147.700537c0-9.903761 7.825194-17.606686 17.606687-17.606686h288.55403c9.781493 0 17.606687 7.825194 17.606686 17.606686v305.671642l-0.244537 86.566209c22.864239-9.536955 47.195701-15.772657 72.138507-18.340298 2.934448-2.078567 6.480239-3.423522 10.515105-3.423523h175.088716V574.662687c8.314269 6.480239 16.384 13.327284 23.964657 20.90794 16.628537 16.628537 30.444896 35.213373 41.815881 55.143164V469.878448c0-9.903761-7.825194-17.606687-17.606687-17.606687H744.860657c-9.903761 0-17.606687-7.825194-17.606687-17.606686V81.92c0-9.903761-7.825194-17.606687-17.606686-17.606687H551.064836c-9.903761 0-17.606687-7.825194-17.606687-17.606686V17.606687c0-9.903761-7.825194-17.606687-17.606686-17.606687h-28.977672c-9.903761 0-17.606687 7.825194-18.095761 17.606687v29.589014c0 9.903761-7.825194 17.606687-17.606687 17.606687H292.466627c-9.903761 0-17.606687 7.825194-17.606687 17.606687v223.87391c0 9.903761-7.825194 17.606687-17.606686 17.606687H33.990687c-9.781493-0.122269-17.606687 7.702925-17.606687 17.484418V1006.271045c0 9.903761 7.825194 17.606687 17.606687 17.606686h652.54782c-39.615045-12.104597-75.928836-33.868418-106.006925-63.946507z m-306.649791-18.829373c0 9.903761-7.825194 17.606687-17.606687 17.606686h-28.977671c-9.903761 0-17.606687-7.825194-17.606687-17.606686V859.548657c0-9.903761-7.825194-17.606687-17.606686-17.606687H163.106388c-9.903761 0-17.606687 7.825194-17.606687 17.606687v81.553194c0 9.903761-7.825194 17.606686-17.606686 17.606686H98.793075c-9.903761 0-17.606687-7.825194-17.606687-17.606686V406.176478c0-9.903761 7.825194-17.606687 17.606687-17.606687h176.189134l-1.100418 552.53206zM163.473194 776.650507h28.977672c9.903761 0 17.606687-7.825194 17.606686-17.606686V729.943881c0-9.903761-7.825194-17.606687-17.606686-17.606687h-46.584359v46.584358c0 9.903761 7.825194 17.728955 17.606687 17.728955zM163.473194 517.563224h28.977672c9.903761 0 17.606687-7.825194 17.606686-17.606687v-28.977671c0-9.781493-7.825194-17.606687-17.606686-17.606687h-46.584359v46.584358c0 9.903761 7.825194 17.606687 17.606687 17.606687zM163.473194 647.045731h28.977672c9.903761 0 17.606687-7.825194 17.606686-17.606686v-28.977672c0-9.781493-7.825194-17.606686-17.606686-17.606686h-46.584359v46.584358c0 9.903761 7.825194 17.728955 17.606687 17.606686zM454.717134 258.47594h93.78006c9.903761 0 17.606687-7.825194 17.606687-17.606686v-28.977672c0-9.903761-7.825194-17.606686-17.606687-17.606686h-111.875821l0.489075 46.584358c0 9.903761 7.702925 17.606686 17.606686 17.606686zM437.110448 499.956537c0 9.903761 7.825194 17.606687 17.606686 17.606687h93.78006c9.903761 0 17.606687-7.825194 17.606687-17.606687v-28.977671c0-9.781493-7.825194-17.606687-17.606687-17.606687h-111.875821l0.489075 46.584358zM548.497194 582.854687h-111.875821l0.489075 46.584358c0 9.903761 7.825194 17.606687 17.606686 17.606686h86.199403c7.336119-12.349134 15.650388-24.331463 25.187344-35.580179v-11.004179c0-9.781493-7.825194-17.606687-17.606687-17.606686zM437.110448 370.47403c0 9.903761 7.825194 17.606686 17.606686 17.606686h93.78006c9.903761 0 17.606687-7.825194 17.606687-17.606686v-28.977672c0-9.903761-7.825194-17.606686-17.606687-17.606686h-111.875821l0.489075 46.584358zM436.499104 712.337194l0.489075 46.584358c0 9.903761 7.825194 17.606687 17.606687 17.606687h50.496955c0.122269-21.641552 3.056716-43.160836 8.558806-64.191045h-77.151523zM996.856358 959.931224l-80.452776-80.452776c19.929791-29.955821 30.689433-65.046925 30.689433-101.849791 0-49.274269-19.196179-95.491821-54.042746-130.338388-34.846567-34.846567-81.064119-54.042746-130.338388-54.042747s-95.491821 19.196179-130.338388 54.042747c-71.89397 71.89397-71.89397 188.782806 0 260.676776a183.036179 183.036179 0 0 0 130.338388 54.042746c36.802866 0 71.89397-10.759642 101.849791-30.689433l80.330507 80.330508c7.213851 7.213851 16.506269 10.759641 25.920955 10.759641s18.829373-3.545791 25.920956-10.759641a36.423833 36.423833 0 0 0 0.122268-51.719642z m-312.640955-103.683821c-43.283104-43.283104-43.283104-113.709851 0-156.992955a110.335236 110.335236 0 0 1 78.496478-32.523463c29.589015 0 57.466269 11.493254 78.496477 32.523463 20.90794 20.90794 32.523463 48.785194 32.523463 78.496477s-11.493254 57.466269-32.523463 78.496478a110.335236 110.335236 0 0 1-78.496477 32.523463 111.264478 111.264478 0 0 1-78.496478-32.523463z"/></svg>
+<h3 style="margin:20px 0 8px;font-family:'Montserrat',sans-serif;font-size:20px">Soluciones Corporativas</h3>
+<p style="margin:0;color:#FFFFFF">Impulsa el crecimiento de tu empresa con programas de bienestar financiero para empleados y plans de jubilación corporativos de alto beneficio fiscal.</p>
+</div>
+</div>
+</section>
+
+<section id="diagnostico" class="kd-dx" style="padding:0 0 96px">
+<div class="kd-dx-card">
+
+<!-- Pantalla 1: presentación -->
+<div id="dx-start">
+<p class="kd-dx-eyebrow">DIAGNÓSTICO FINANCIERO</p>
+<h2>¿CÓMO ESTÁ REALMENTE TU SALUD FINANCIERA?</h2>
+<p>Responde 12 preguntas sencillas y descubre gratuitamente cómo está tu situación financiera actual. Identifica tus fortalezas, descubre qué puedes mejorar y recibe una orientación inicial para tomar mejores decisiones con tu dinero.</p>
+<button type="button" class="kd-dx-btn" id="dx-go1">HAZ MI DIAGNÓSTICO GRATUITO</button>
+<p style="margin:12px 0 0;font-size:14px;opacity:.85">Te tomará aproximadamente 3–5 minutos.</p>
+</div>
+
+<!-- Pantalla 2: introducción -->
+<div id="dx-intro" hidden>
+<p class="kd-dx-eyebrow">ANTES DE EMPEZAR</p>
+<h2>Este diagnóstico analiza cuatro aspectos fundamentales de tus finanzas</h2>
+<div class="kd-dx-grid4">
+<div class="kd-dx-pill"><b>💰 Organización</b>Qué tan claro tienes cuánto recibes y cuánto gastas.</div>
+<div class="kd-dx-pill"><b>🏦 Ahorro</b>Tu capacidad para ahorrar y estar preparado ante imprevistos.</div>
+<div class="kd-dx-pill"><b>📈 Crecimiento</b>Qué estás haciendo para construir patrimonio y alcanzar tus metas.</div>
+<div class="kd-dx-pill"><b>🛡️ Protección</b>Qué tan preparado estás para proteger tus ingresos, tu familia y tu futuro.</div>
+</div>
+<button type="button" class="kd-dx-btn" id="dx-go2">COMENZAR DIAGNÓSTICO</button>
+</div>
+
+<!-- Pantalla 3: preguntas -->
+<div id="dx-quiz" hidden>
+<div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:8px"><span id="dx-cat" style="color:#00C73C;font-weight:700;letter-spacing:1px"></span><span id="dx-count"></span></div>
+<div class="kd-dx-bar" role="progressbar" aria-valuemin="0" aria-valuemax="12" aria-valuenow="0" id="dx-prog"><i id="dx-progfill"></i></div>
+<h2 id="dx-q" tabindex="-1" style="font-size:28px;margin-bottom:12px"></h2>
+<p id="dx-qhint" class="kd-dx-hint" hidden></p>
+<div id="dx-opts" role="group" aria-labelledby="dx-q"></div>
+<div style="margin-top:20px"><button type="button" class="kd-dx-ghost" id="dx-back">← Anterior</button></div>
+</div>
+
+<!-- Pantalla 4: resultados -->
+<div id="dx-result" hidden>
+<div class="kd-dx-light" id="dx-light"></div>
+<p class="kd-dx-eyebrow" id="dx-rtag"></p>
+<h2 id="dx-rtitle" tabindex="-1"></h2>
+<p class="kd-dx-score" id="dx-rscore"></p>
+<p id="dx-rtext"></p>
+<p class="kd-dx-hl" id="dx-rhl"></p>
+<div class="kd-dx-cols">
+<div class="kd-dx-col"><h3>✅ Tus fortalezas</h3><ul id="dx-str"></ul></div>
+<div class="kd-dx-col"><h3>🎯 Áreas de oportunidad</h3><ul id="dx-opp"></ul></div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+<button type="button" class="kd-dx-btn" id="dx-cta"></button>
+<button type="button" class="kd-dx-ghost" id="dx-redo">Repetir diagnóstico</button>
+</div>
+</div>
+
+<!-- Pantalla 5: formulario -->
+<div id="dx-form" hidden>
+<p class="kd-dx-eyebrow">ORIENTACIÓN FINANCIERA GRATUITA</p>
+<h2 id="dx-ftitle" tabindex="-1" style="font-size:30px">Déjanos tus datos y un asesor se contactará contigo</h2>
+<p>Un asesor de Kapital Delta se comunicará contigo para resolver todas tus dudas sobre tu situación financiera.</p>
+<form class="kd-dx-form" id="dx-formel" novalidate>
+<div class="kd-dx-row">
+<div class="kd-dx-field"><input class="kd-dx-in" type="text" id="dx-nombre" name="nombre" placeholder="Nombre *" autocomplete="given-name" aria-label="Nombre" required></div>
+<div class="kd-dx-field"><input class="kd-dx-in" type="text" id="dx-apellidos" name="apellidos" placeholder="Apellidos *" autocomplete="family-name" aria-label="Apellidos" required></div>
+</div>
+<div class="kd-dx-row">
+<div class="kd-dx-field"><input class="kd-dx-in" type="tel" id="dx-cel" name="celular" placeholder="Número de celular *" inputmode="tel" autocomplete="tel" aria-label="Número de celular" required></div>
+<div class="kd-dx-field"><input class="kd-dx-in" type="email" id="dx-mail" name="correo" placeholder="Correo electrónico *" autocomplete="email" aria-label="Correo electrónico" required></div>
+</div>
+<div class="kd-dx-hp" aria-hidden="true"><label>No llenar<input type="text" id="dx-honey" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+<div style="text-align:center">
+<label class="kd-dx-robot" id="dx-robot"><input type="checkbox" id="dx-human"><span class="kd-dx-box" aria-hidden="true"></span><span>No soy un robot</span></label>
+</div>
+<p class="kd-dx-auth">Al dar clic en el botón declaras que conoces y aceptas la autorización sobre protección de datos, términos y condiciones del portal que se encuentra en <a href="Politica_Tratamiento_Datos_Kapital_Delta.pdf" target="_blank" rel="noopener noreferrer">tratamiento de datos personales. T&amp;C</a></p>
+<p class="kd-dx-err" id="dx-err" role="alert" aria-live="polite"></p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center">
+<button type="submit" class="kd-dx-btn" id="dx-send">ENVIAR MIS DATOS</button>
+<button type="button" class="kd-dx-ghost" id="dx-fback">← Volver a mi resultado</button>
+</div>
+</form>
+</div>
+
+<!-- Pantalla 6: gracias -->
+<div id="dx-thanks" hidden style="text-align:center;padding:24px 0">
+<div class="kd-dx-light" style="--c:#00C73C;background:#00C73C;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:44px;color:#23201F;font-weight:700">✓</div>
+<h2 id="dx-ttitle" tabindex="-1" style="font-size:30px">¡Gracias, <span id="dx-tname"></span>!</h2>
+<p>Gracias por completar tu diagnóstico financiero.</p>
+<button type="button" class="kd-dx-ghost" id="dx-tdone">Volver al inicio</button>
+</div>
+
+<p class="kd-dx-legal"><b>Aviso importante:</b> este diagnóstico es una herramienta educativa y de orientación inicial. No constituye una asesoría financiera personalizada ni una recomendación de inversión. Para tomar decisiones sobre tu dinero, solicita una orientación personalizada con un asesor.</p>
+</div>
+</section>
+
+<section id="contacto" style="background:#3E3E3E;border:1px solid #FFFFFF;border-radius:20px;padding:56px 40px;margin-bottom:96px;display:flex;flex-wrap:wrap;gap:40px">
+<div style="flex:1 1 320px">
+<p style="margin:0 0 12px;color:#00C73C;font-weight:700;letter-spacing:2px;font-size:13px">CANALES OFICIALES</p>
+<h2 style="margin:0 0 16px;font-family:'Montserrat',sans-serif;font-size:36px;line-height:1.2">Contacte solo por medios verificados</h2>
+<p style="margin:0;color:#FFFFFF">Si recibe un mensaje desde un canal distinto a los siguientes, verifique en uno de los caneles siguientes antes de responder.</p>
+</div>
+<div style="flex:1 1 320px;display:flex;flex-direction:column;gap:20px">
+<div><div style="color:#FFFFFF;font-size:13px">Correo electrónico</div><div style="font-size:18px;font-weight:700">kapitaldelta@fp.skandia.com.co</div></div>
+<div><div style="color:#FFFFFF;font-size:13px">Teléfono / WhatsApp</div><div style="font-size:18px;font-weight:700">+57 317 3735913</div></div>
+<div><div style="color:#FFFFFF;font-size:13px">Dirección</div><div style="font-size:18px;font-weight:700">Av. 19 # 109A - 30, Bogotá, Colombia</div></div>
+<div><div style="color:#FFFFFF;font-size:13px">NIT</div><div style="font-size:18px;font-weight:700">901017398-9</div></div>
+</div>
+</section>
+
+<section id="trabaja" style="padding:0 0 96px">
+<p style="margin:0 0 12px;color:#00C73C;font-weight:700;letter-spacing:2px;font-size:13px">TALENTO</p>
+<h2 style="margin:0 0 16px;font-family:'Montserrat',sans-serif;font-size:40px;line-height:1.2">Trabaja con nosotros</h2>
+<p style="margin:0 0 40px;color:#FFFFFF;max-width:640px">¡Únete al equipo de Kapital Delta, agencia exclusiva de Skandia, y forma parte de una fuerza comercial de alto rendimiento enviando tu hoja de vida al correo <a href="mailto:cbello@fp.skandia.com" style="color:#00C73C;">cbello@fp.skandia.com</a> con el asunto de la posición de tu interés para postularte a sus vacantes disponibles!</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+<div style="background:#3E3E3E;border:1px solid #FFFFFF;border-radius:16px;padding:24px">
+<div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px">Financial Planner</div>
+<div style="color:#FFFFFF;font-size:14px;margin-top:6px">Colombia/Híbrido</div>
+</div>
+<div style="background:#3E3E3E;border:1px solid #FFFFFF;border-radius:16px;padding:24px">
+<div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px">Asesor Pensional</div>
+<div style="color:#FFFFFF;font-size:14px;margin-top:6px">Colombia/Híbrido</div>
+</div>
+<div style="background:#3E3E3E;border:1px solid #FFFFFF;border-radius:16px;padding:24px">
+<div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:18px">Asesor de Seguros</div>
+<div style="color:#FFFFFF;font-size:14px;margin-top:6px">Colombia/Híbrido</div>
+</div>
+</div>
+</section>
+
+</div>
+
+<footer style="border-top:1px solid #FFFFFF;padding:32px 24px;text-align:center;color:#FFFFFF;font-size:13px">
+© Kapital Delta Ltda. Todos los derechos reservados. Por su seguridad, recuerde: Kapital Delta no solicita claves, códigos, dinero ni depósitos a través de ningún canal.
+</footer>
+</div>
+
+<!-- Botón flotante de WhatsApp -->
+<a class="kd-wa" href="https://api.whatsapp.com/send?phone=573173735913" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<script>
+(function(){
+var AMIN=50000,AMAX=5000000000,MMIN=50000,MMAX=100000000,STEP=50000;
+function toPos(v,lo,hi){return v<=0?0:Math.max(1,Math.round(1000*Math.log(Math.max(v,lo)/lo)/Math.log(hi/lo)));}
+function fromPos(t,lo,hi){return t<=0?0:Math.min(hi,Math.max(lo,Math.round(lo*Math.pow(hi/lo,t/1000)/STEP)*STEP));}
+var st={amount:0,monthly:0,years:0,rate:0};
+var el={a:document.getElementById('sim-inicial'),m:document.getElementById('sim-mensual'),y:document.getElementById('sim-plazo'),r:document.getElementById('sim-tasa'),bar:document.getElementById('sim-bar')};
+function cop(x){return '$ '+new Intl.NumberFormat('es-CO').format(Math.round(x));}
+function set(k,v){var n=document.querySelectorAll('[data-bind="'+k+'"]');for(var i=0;i<n.length;i++)n[i].textContent=v;}
+function render(){
+var n=st.years*12,i=Math.pow(1+st.rate/100,1/12)-1,g=Math.pow(1+i,n);
+var fv=st.amount*g+(i>0?st.monthly*(g-1)/i:st.monthly*n);
+var inv=st.amount+st.monthly*n;
+set('amountLabel',cop(st.amount));set('monthlyLabel',cop(st.monthly));
+set('yearsLabel',st.years+(st.years===1?' año':' años'));
+set('rateLabel',String(st.rate).replace('.',',')+'%');
+set('finalLabel',cop(fv));set('investedLabel',cop(inv));set('gainLabel',cop(fv-inv));
+el.bar.style.width=(fv>0?Math.max(0,Math.min(100,inv/fv*100)):0).toFixed(1)+'%';
+}
+el.a.value=toPos(st.amount,AMIN,AMAX);el.m.value=toPos(st.monthly,MMIN,MMAX);
+el.y.value=st.years;el.r.value=st.rate;
+el.a.addEventListener('input',function(e){st.amount=fromPos(+e.target.value,AMIN,AMAX);render();});
+el.m.addEventListener('input',function(e){st.monthly=fromPos(+e.target.value,MMIN,MMAX);render();});
+el.y.addEventListener('input',function(e){st.years=+e.target.value;render();});
+el.r.addEventListener('input',function(e){st.rate=+e.target.value;render();});
+render();
+})();
+</script>
+
+<script>
+/* Carrusel del hero */
+(function(){
+var root=document.getElementById('kd-hero');
+if(!root)return;
+var slides=root.querySelectorAll('.kd-slide');
+var dots=root.querySelectorAll('.kd-dot');
+var prev=document.getElementById('kd-prev');
+var next=document.getElementById('kd-next');
+var INTERVAL=6000,cur=0,timer=null;
+var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function show(i){
+cur=(i+slides.length)%slides.length;
+for(var k=0;k<slides.length;k++){
+var on=(k===cur);
+slides[k].classList.toggle('is-active',on);
+slides[k].setAttribute('aria-hidden',on?'false':'true');
+dots[k].classList.toggle('is-active',on);
+dots[k].setAttribute('aria-current',on?'true':'false');
+}
+}
+function stop(){if(timer){clearInterval(timer);timer=null;}}
+function start(){
+if(reduce)return;
+stop();
+timer=setInterval(function(){show(cur+1);},INTERVAL);
+}
+function go(i){show(i);start();}
+prev.addEventListener('click',function(){go(cur-1);});
+next.addEventListener('click',function(){go(cur+1);});
+for(var d=0;d<dots.length;d++){(function(n){dots[n].addEventListener('click',function(){go(n);});})(d);}
+root.addEventListener('mouseenter',stop);
+root.addEventListener('mouseleave',start);
+root.addEventListener('focusin',stop);
+root.addEventListener('focusout',start);
+show(0);
+start();
+})();
+</script>
+
+<script>
+/* Aparición suave de secciones */
+(function(){
+var els=document.querySelectorAll('#simulador,#nosotros,#equipo,#servicios,#diagnostico,#contacto,#trabaja');
+if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  els.forEach(function(el){el.classList.add('is-in');});
+  return;
+}
+document.documentElement.classList.add('kd-js');
+var io=new IntersectionObserver(function(entries){
+entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});
+},{threshold:.12});
+els.forEach(function(el){el.classList.add('kd-reveal');io.observe(el);});
+})();
+</script>
+
+<script>
+/* Diagnóstico Financiero Gratuito */
+(function(){
+var Q=[
+{c:'Organización',k:'org',t:'¿Tienes claro cuánto dinero recibes al mes?',o:[['Sí, lo tengo totalmente claro.',3],['Más o menos.',2],['No realmente.',1]]},
+{c:'Organización',k:'org',t:'¿Sabes cuánto gastas aproximadamente cada mes?',o:[['Sí, llevo un control.',3],['Tengo una idea.',2],['No lo sé.',1]]},
+{c:'Ahorro',k:'aho',t:'De tus ingresos mensuales, ¿cuánto logras ahorrar?',o:[['Más del 20%.',3],['Entre el 10% y el 20%.',2],['Menos del 10%.',1],['No logro ahorrar.',0]]},
+{c:'Ahorro',k:'aho',t:'¿Tienes un ahorro destinado para emergencias?',h:'Para cubrir enfermedad, pérdida temporal de ingresos, desempleo, etc.',o:[['Sí, tengo más de 6 meses de gastos.',3],['Tengo entre 3 y 6 meses de gastos.',2],['Tengo menos de 3 meses.',1],['No tengo un fondo de emergencia.',0]]},
+{c:'Deudas',k:'org',t:'¿Cómo manejas actualmente tus deudas?',o:[['Las tengo controladas y puedo pagarlas cómodamente.',3],['Algunas veces me cuesta pagarlas.',2],['Una parte importante de mis ingresos se va en deudas.',1],['Tengo dificultades para pagarlas.',0]]},
+{c:'Metas',k:'cre',t:'¿Tienes dinero destinado para metas específicas?',h:'Vivienda, educación, viajes, vehículo, hijos, retiro, etc.',o:[['Sí, tengo varias metas organizadas.',3],['Tengo algunas metas, pero no están completamente organizadas.',2],['Ahorro, pero sin un objetivo definido.',1],['No tengo un plan.',0]]},
+{c:'Plan financiero',k:'cre',t:'¿Tienes un plan para tu futuro financiero?',o:[['Sí, tengo objetivos claros y sé cuánto necesito.',3],['Tengo algunos objetivos.',2],['Lo he pensado, pero no tengo un plan definido.',1],['No lo he pensado.',0]]},
+{c:'Protección',k:'pro',t:'¿Qué tan preparado estás para proteger tus ingresos y a tu familia ante un imprevisto?',o:[['Tengo seguros y mecanismos de protección adecuados para mi situación.',3],['Tengo alguna protección.',2],['No estoy seguro de estar suficientemente protegido.',1],['No tengo protección.',0]]},
+{c:'Patrimonio',k:'cre',t:'¿Cómo estás construyendo tu patrimonio?',o:[['Tengo inversiones, ahorros y una estrategia definida.',3],['Tengo algunos ahorros o inversiones.',2],['Principalmente mantengo mi dinero en cuentas de ahorro.',1],['Actualmente no estoy construyendo patrimonio.',0]]},
+{c:'Retiro',k:'pro',t:'¿Tienes claro cómo estás preparando tu retiro?',o:[['Sí, tengo una estrategia clara.',3],['Tengo pensión, pero no sé si será suficiente.',2],['Lo he pensado poco.',1],['No tengo ningún plan.',0]]},
+{c:'Beneficios tributarios',k:'cre',t:'¿Conoces los beneficios tributarios que puedes aprovechar para ahorrar o invertir?',o:[['Sí y los utilizo.',3],['Los conozco, pero no los aprovecho completamente.',2],['He escuchado sobre ellos, pero no los conozco bien.',1],['No los conozco.',0]]},
+{c:'Resiliencia financiera',k:'aho',t:'Si mañana tus ingresos disminuyeran durante varios meses, ¿podrías mantener tu nivel de vida?',o:[['Sí, sin mayores problemas.',3],['Podría hacerlo durante algunos meses.',2],['Tendría dificultades.',1],['No podría mantenerlo.',0]]}
+];
+var CAT={org:{n:'Organización',i:'💰',m:9,s:'Tienes claridad sobre tus ingresos, gastos y deudas.',o:'Conocer mejor tus ingresos y gastos, y ordenar tus deudas, es la base de todo lo demás.'},
+aho:{n:'Ahorro',i:'🏦',m:9,s:'Tienes hábito de ahorro y una red de seguridad ante imprevistos.',o:'Fortalecer tu ahorro y tu fondo de emergencias te dará tranquilidad si tus ingresos cambian.'},
+cre:{n:'Crecimiento',i:'📈',m:12,s:'Tus metas, tu patrimonio y tu planificación van por buen camino.',o:'Definir metas claras y una estrategia para tu patrimonio, incluidos los beneficios tributarios, puede acelerar tu progreso.'},
+pro:{n:'Protección',i:'🛡️',m:6,s:'Tienes mecanismos para proteger tus ingresos, tu familia y tu retiro.',o:'Revisar tu protección y la preparación de tu retiro te ayudará a cuidar a los tuyos y tu futuro.'}};
+var R={
+g:{c:'#00C73C',e:'🟢',tag:'RANGO VERDE',t:'TU SALUD FINANCIERA ESTÁ BIEN',x:'Tienes una buena base financiera y estás tomando decisiones que favorecen tu estabilidad y la construcción de patrimonio. Esto no significa que todo esté perfecto. El siguiente nivel consiste en optimizar lo que ya estás haciendo: organizar mejor tus metas, hacer que tu dinero trabaje de acuerdo con tus objetivos, revisar tu nivel de protección y aprovechar las oportunidades de planificación financiera y tributaria disponibles para ti.',h:'Tienes una buena base. Ahora puedes trabajar en hacerla crecer.',b:'QUIERO OPTIMIZAR MIS FINANZAS'},
+y:{c:'#F5C518',e:'🟡',tag:'RANGO AMARILLO',t:'TU SALUD FINANCIERA PUEDE MEJORAR',x:'Tienes algunos hábitos y recursos financieros positivos, pero existen oportunidades importantes para mejorar. Aspectos como el ahorro, la organización de tus metas, el manejo de las deudas, la protección y la construcción de patrimonio pueden estar limitando tu crecimiento financiero. La buena noticia es que tienes una base sobre la cual puedes construir.',h:'Pequeños cambios financieros sostenidos pueden generar grandes diferencias en el largo plazo.',b:'QUIERO MEJORAR MI SITUACIÓN FINANCIERA'},
+r:{c:'#E5484D',e:'🔴',tag:'RANGO ROJO',t:'NECESITAS FORTALECER TU SALUD FINANCIERA',x:'Tu diagnóstico muestra varios aspectos que requieren atención. Antes de pensar en inversiones o decisiones financieras más complejas, es importante fortalecer las bases: conocer tus ingresos y gastos, organizar tus deudas, crear un fondo para emergencias y establecer objetivos financieros claros. No se trata de cuánto dinero tienes actualmente, sino de comenzar a construir una estructura financiera más sólida.',h:'El primer paso para mejorar tus finanzas es conocer dónde estás hoy.',b:'QUIERO ORGANIZAR MIS FINANZAS'}};
+var $=function(i){return document.getElementById(i)};
+var scr={start:$('dx-start'),intro:$('dx-intro'),quiz:$('dx-quiz'),result:$('dx-result'),form:$('dx-form'),thanks:$('dx-thanks')};
+var last={};
+if(!scr.start)return;
+var idx=0,ans=[];
+function show(n,focusEl){for(var k in scr)scr[k].hidden=(k!==n);if(focusEl)focusEl.focus({preventScroll:true});
+  var top=$('diagnostico').getBoundingClientRect().top;if(top<0||top>window.innerHeight*.6)$('diagnostico').scrollIntoView({behavior:'smooth',block:'start'});}
+function render(){
+  var q=Q[idx];
+  $('dx-cat').textContent=q.c.toUpperCase();
+  $('dx-count').textContent='Pregunta '+(idx+1)+' de 12';
+  $('dx-progfill').style.width=(idx/12*100)+'%';
+  $('dx-prog').setAttribute('aria-valuenow',idx);
+  $('dx-q').textContent=(idx+1)+'. '+q.t;
+  var h=$('dx-qhint');if(q.h){h.textContent=q.h;h.hidden=false}else h.hidden=true;
+  var box=$('dx-opts');box.innerHTML='';
+  q.o.forEach(function(o,j){
+    var b=document.createElement('button');b.type='button';b.className='kd-dx-opt'+(ans[idx]===j?' is-sel':'');
+    var l=document.createElement('b');l.textContent=String.fromCharCode(65+j)+')';
+    b.appendChild(l);b.appendChild(document.createTextNode(o[0]));
+    b.addEventListener('click',function(){pick(j)});
+    box.appendChild(b);
+  });
+  $('dx-back').disabled=(idx===0);
+}
+var lock=false;
+function pick(j){
+  if(lock)return;lock=true;ans[idx]=j;
+  var bs=$('dx-opts').children;for(var i=0;i<bs.length;i++)bs[i].classList.toggle('is-sel',i===j);
+  setTimeout(function(){lock=false;
+    if(idx<11){idx++;render();$('dx-q').focus({preventScroll:true})}else finish();
+  },220);
+}
+function finish(){
+  var tot=0,by={org:0,aho:0,cre:0,pro:0};
+  Q.forEach(function(q,i){var v=q.o[ans[i]][1];tot+=v;by[q.k]+=v});
+  var key=tot>=29?'g':tot>=20?'y':'r',r=R[key];
+  $('dx-light').style.setProperty('--c',r.c);$('dx-light').style.background=r.c;
+  $('dx-light').setAttribute('role','img');$('dx-light').setAttribute('aria-label',r.tag);
+  $('dx-result').style.setProperty('--c',r.c);
+  $('dx-rtag').textContent=r.e+' '+r.tag;
+  $('dx-rtitle').textContent=r.t;
+  $('dx-rscore').textContent='Tu puntaje: '+tot+' de 36 puntos';
+  $('dx-rtext').textContent=r.x;
+  $('dx-rhl').textContent=r.h;$('dx-rhl').style.setProperty('--c',r.c);
+  var st=$('dx-str'),op=$('dx-opp');st.innerHTML='';op.innerHTML='';
+  var ns=0,no=0;
+  ['org','aho','cre','pro'].forEach(function(k){
+    var c=CAT[k],pct=Math.round(by[k]/c.m*100),good=pct>=70;
+    var li=document.createElement('li');
+    var b=document.createElement('b');b.textContent=c.i+' '+c.n+' · '+pct+'%';
+    li.appendChild(b);li.appendChild(document.createElement('br'));
+    li.appendChild(document.createTextNode(good?c.s:c.o));
+    var m=document.createElement('div');m.className='kd-dx-mini';
+    var f=document.createElement('i');f.style.width=pct+'%';f.style.background=pct>=70?'#00C73C':pct>=45?'#F5C518':'#E5484D';
+    m.appendChild(f);li.appendChild(m);
+    (good?st:op).appendChild(li);good?ns++:no++;
+  });
+  if(!ns){var a=document.createElement('li');a.textContent='Dar este primer paso ya es una fortaleza: conocer tu punto de partida te permite avanzar con claridad.';st.appendChild(a)}
+  if(!no){var a2=document.createElement('li');a2.textContent='Todas tus áreas van bien. El siguiente paso es optimizar y hacer crecer lo que ya tienes.';op.appendChild(a2)}
+  var cta=$('dx-cta');cta.textContent=r.b;
+  var det=[];['org','aho','cre','pro'].forEach(function(k){det.push(CAT[k].n+': '+Math.round(by[k]/CAT[k].m*100)+'%')});
+  last={rango:r.tag,puntaje:tot+' de 36',detalle:det.join(' | '),cta:r.b};
+  $('dx-progfill').style.width='100%';
+  show('result',$('dx-rtitle'));
+}
+$('dx-go1').addEventListener('click',function(){show('intro')});
+$('dx-go2').addEventListener('click',function(){idx=0;ans=[];render();show('quiz',$('dx-q'))});
+$('dx-back').addEventListener('click',function(){if(idx>0){idx--;render();$('dx-q').focus({preventScroll:true})}});
+$('dx-redo').addEventListener('click',function(){idx=0;ans=[];show('start')});
+$('dx-cta').addEventListener('click',function(){$('dx-err').textContent='';show('form',$('dx-ftitle'))});
+$('dx-fback').addEventListener('click',function(){show('result',$('dx-rtitle'))});
+$('dx-tdone').addEventListener('click',function(){idx=0;ans=[];$('dx-formel').reset();show('start')});
+$('dx-human').addEventListener('change',function(){$('dx-robot').classList.remove('is-bad')});
+
+$('dx-formel').addEventListener('submit', async function(e){
+  e.preventDefault();
+  var f=$('dx-formel'),err=$('dx-err'),bad=null;
+  ['dx-nombre','dx-apellidos','dx-cel','dx-mail'].forEach(function(i){$(i).classList.remove('is-bad')});
+  var nombre=$('dx-nombre').value.trim(),ap=$('dx-apellidos').value.trim(),cel=$('dx-cel').value.replace(/[\s\-().]/g,''),mail=$('dx-mail').value.trim();
+  var msg='';
+  if(!nombre){bad='dx-nombre';msg='Escribe tu nombre.'}
+  else if(!ap){bad='dx-apellidos';msg='Escribe tus apellidos.'}
+  else if(!/^\d{7,12}$/.test(cel)){bad='dx-cel';msg='Escribe un número de celular válido, solo con números.'}
+  else if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)){bad='dx-mail';msg='Escribe un correo electrónico válido.'}
+  else if(!$('dx-human').checked){$('dx-robot').classList.add('is-bad');msg='Confirma que no eres un robot.'}
+  if(msg){err.textContent=msg;if(bad){$(bad).classList.add('is-bad');$(bad).focus()}return}
+  if($('dx-honey').value){show('thanks',$('dx-ttitle'));return}
+
+  err.textContent='';
+  var btnSend = $('dx-send');
+  btnSend.disabled = true;
+  btnSend.textContent = 'ENVIANDO...';
+
+  var scriptURL = 'https://script.google.com/macros/s/AKfycbxLTdmUPcgsxhnzhRPpziQyTWXQ8wwKSvy1v9dAOg_ZaOJMqJ2lO_s1gFtvF8hgc54B/exec';
+  var payload = {
+    nombre: nombre,
+    apellidos: ap,
+    celular: cel,
+    correo: mail
+  };
+
+  try {
+    await fetch(scriptURL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+    $('dx-tname').textContent = nombre;
+    show('thanks', $('dx-ttitle'));
+  } catch (error) {
+    console.error('Error al enviar:', error);
+    err.textContent = 'Ocurrió un error al enviar tus datos. Por favor intenta de nuevo.';
+  } finally {
+    btnSend.disabled = false;
+    btnSend.textContent = 'ENVIAR MIS DATOS';
+  }
+});
+
+})();
+</script>
+</body>
+</html>
