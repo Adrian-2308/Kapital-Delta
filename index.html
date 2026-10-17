@@ -1094,7 +1094,7 @@ f.addEventListener('submit',async function(e){
   var btn=$('ct-send');
   btn.disabled=true;
   btn.textContent='ENVIANDO...';
-  var scriptURL='https://script.google.com/macros/s/AKfycbxLTdmUPcgsxhnzhRPpziQyTWXQ8wwKSvy1v9dAOg_ZaOJMqJ2lO_s1gFtvF8hgc54B/exec';
+  var scriptURL = 'https://script.google.com/macros/s/AKfycbymSqR4lgauE0TFhCPCpovu0M3syxCS7Y4zL7mLRFBFxzrQ2RyYeif2PaVp1RRsxWMQ0g/exec';
   var payload={nombre:nombre,apellidos:ap,celular:cel,correo:mail};
   try{
     await fetch(scriptURL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
