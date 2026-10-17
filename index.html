@@ -217,6 +217,79 @@ p,li,footer,body>div>div:first-child,.kd-role,.kd-email,.kd-amv,.kd-dx-opt,.kd-d
 .kd-nos-why,.kd-nos-why *{text-align:start!important}
 /* Los bloques que estaban centrados mantienen centrada su última línea */
 body>div>div:first-child,footer,.kd-member *,.kd-dx-auth,.kd-dx-err,#dx-thanks *{text-align-last:center}
+
+/* ===== Ajustes para teléfono móvil (no afectan la versión de escritorio) ===== */
+@media (max-width:640px){
+html{-webkit-text-size-adjust:100%}
+body{overflow-x:hidden}
+/* Aviso superior y contenedor */
+body>div>div:first-child{padding:10px 16px!important;font-size:12.5px!important;line-height:1.5}
+div[style*="max-width:1200px"]{padding:0 18px!important}
+/* Encabezado y menú */
+header{flex-direction:column;align-items:center!important;gap:14px!important;padding:18px 0!important}
+nav{justify-content:center;gap:6px 18px!important;font-size:14px!important}
+nav a[href="#contacto"]{flex:1 1 100%;text-align:center;box-sizing:border-box;margin-top:8px}
+/* Hero */
+#kd-hero{padding:32px 0 48px!important}
+.kd-slide{gap:24px}
+.kd-slide>div:first-child,.kd-slide>div:last-child{flex:1 1 100%!important}
+.kd-slide>div:last-child{border-radius:16px!important}
+.kd-slide h1{font-size:32px!important;margin-bottom:16px!important}
+.kd-slide h2{font-size:28px!important;margin-bottom:16px!important}
+.kd-slide p[style*="font-size:18px"]{font-size:16px!important;margin-bottom:24px!important}
+.kd-slide a{display:block}
+.kd-hero-btn{width:100%;padding:15px 20px}
+#kd-hero>div:last-child{margin-top:24px!important}
+/* Simulador */
+#simulador{padding-bottom:48px!important}
+#simulador>div{padding:22px 18px!important;gap:28px!important;border-radius:16px!important}
+#simulador>div>div{flex:1 1 100%!important}
+#simulador>div>div:last-child{padding:22px 18px!important}
+#simulador>div>div:last-child>div:nth-child(2){font-size:32px!important}
+/* Cifras */
+section[style*="border-top:1px solid #FFFFFF;border-bottom"]{padding:28px 0!important;gap:18px!important}
+section[style*="border-top:1px solid #FFFFFF;border-bottom"]>div{flex:1 1 100%!important}
+section[style*="border-top:1px solid #FFFFFF;border-bottom"]>div>div:first-child{font-size:32px!important}
+/* Quiénes somos */
+#nosotros{padding:56px 0!important;gap:24px!important}
+#nosotros>div:nth-child(1),#nosotros>div:nth-child(2){flex:1 1 100%!important}
+#nosotros>div:nth-child(2){font-size:16px!important}
+.kd-nos-mv,.kd-nos-grid{grid-template-columns:1fr}
+.kd-nos-card{padding:24px}
+.kd-nos-card h3{font-size:22px}
+.kd-nos-card p{font-size:16px}
+.kd-nos-why{margin-top:40px}
+/* Espaciado de secciones */
+#equipo,#servicios,#diagnostico,#trabaja{padding-bottom:56px!important}
+#equipo>h2,#servicios>h2{margin-bottom:28px!important}
+#servicios>div>div{padding:24px!important}
+#trabaja>p{margin-bottom:28px!important}
+/* Diagnóstico */
+.kd-dx-grid4,.kd-dx-cols{grid-template-columns:1fr}
+.kd-dx-btn{width:100%;box-sizing:border-box}
+.kd-dx-robot{padding:14px 16px}
+.kd-dx-auth{font-size:13px}
+/* Contacto */
+#contacto{padding:28px 20px!important;margin-bottom:56px!important;gap:28px!important;border-radius:16px!important}
+#contacto>div{flex:1 1 100%!important}
+#contacto>div:last-child{padding-top:28px!important}
+#contacto h3{font-size:24px!important}
+#contacto [style*="font-size:18px"]{font-size:16px!important;overflow-wrap:anywhere}
+/* Pie de página y botón de WhatsApp */
+footer{padding:24px 18px 80px!important;font-size:12px!important}
+.kd-wa{width:52px;height:52px;right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px))}
+}
+@media (max-width:520px){
+.kd-email{font-size:10.5px;margin-top:10px;padding-top:10px}
+.kd-amv{font-size:10px;padding:5px 8px;letter-spacing:0}
+.kd-amv svg{width:12px;height:12px;margin-right:4px}
+.kd-divider{margin:10px 0}
+}
+@media (max-width:360px){
+.kd-slide h1{font-size:28px!important}
+.kd-slide h2{font-size:25px!important}
+#simulador>div>div:last-child>div:nth-child(2){font-size:28px!important}
+}
 </style>
 
 </head>
