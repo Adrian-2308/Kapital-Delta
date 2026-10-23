@@ -323,6 +323,69 @@ section[id],#diagnostico{scroll-margin-top:72px}
 .kd-soc:hover .kd-soc-arrow{transform:translate(3px,-3px)}
 @media (prefers-reduced-motion:reduce){.kd-soc,.kd-soc::before,.kd-soc-ico,.kd-soc-arrow{transition:none}.kd-soc:hover,.kd-soc:hover .kd-soc-ico,.kd-soc:hover .kd-soc-arrow{transform:none}}
 @media (max-width:640px){#redes{padding-bottom:56px!important}.kd-soc{padding:20px}}
+
+/* Pie de página con logotipo */
+.kd-foot{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px 32px}
+.kd-foot-txt{text-align:left;text-align-last:left}
+.kd-foot-logo{height:100px;width:auto;display:block}
+@media (max-width:1360px){.kd-foot{padding-right:84px}}
+@media (max-width:640px){
+.kd-foot{flex-direction:column;justify-content:center;padding-right:0;gap:16px}
+.kd-foot-txt{text-align:center;text-align-last:center}
+.kd-foot-logo{height:72px;max-width:100%}
+}
+
+/* ===== Menú plegable (móvil y tablet) ===== */
+.kd-burger,.kd-backdrop{display:none}
+@media (max-width:900px){
+header{flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;padding:12px 0!important;background:#23201F!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+header.kd-stuck{padding-top:12px!important;padding-bottom:12px!important;margin-bottom:0}
+header img{height:30px!important}
+section[id],#diagnostico{scroll-margin-top:84px}
+.kd-burger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:46px;height:46px;padding:0;margin:0;flex:none;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.28);border-radius:12px;cursor:pointer;position:relative;z-index:3;-webkit-tap-highlight-color:transparent;transition:background .25s ease,border-color .25s ease}
+.kd-burger span{display:block;width:22px;height:2.5px;border-radius:2px;background:#FFFFFF;transition:transform .3s ease,opacity .2s ease,background .25s ease}
+.kd-burger:active{background:rgba(0,199,60,.18)}
+.kd-burger:focus-visible{outline:2px solid #00C73C;outline-offset:3px}
+header.kd-open .kd-burger{border-color:#00C73C;background:rgba(0,199,60,.12)}
+header.kd-open .kd-burger span{background:#00C73C}
+header.kd-open .kd-burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+header.kd-open .kd-burger span:nth-child(2){opacity:0}
+header.kd-open .kd-burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.kd-backdrop{touch-action:none;display:block;position:fixed;top:0;right:0;bottom:0;left:0;z-index:1;background:rgba(0,0,0,.6);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility 0s .3s}
+header.kd-open .kd-backdrop{opacity:1;visibility:visible;transition:opacity .3s ease}
+header nav{position:fixed!important;top:0;right:0;bottom:0;width:min(84vw,340px);z-index:2;display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:stretch!important;justify-content:flex-start!important;gap:0!important;margin:0;padding:calc(92px + env(safe-area-inset-top,0px)) 0 28px;overflow-x:hidden;overflow-y:auto;white-space:normal!important;font-size:17px!important;background:#23201F;border-left:1px solid rgba(255,255,255,.18);box-shadow:-24px 0 48px rgba(0,0,0,.45);transform:translateX(105%);visibility:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),visibility 0s .35s;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+header.kd-open nav{transform:none;visibility:visible;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+header nav a{display:block!important;flex:none!important;padding:17px 28px!important;margin:0;font-size:17px;font-weight:600;border-bottom:1px solid rgba(255,255,255,.1);opacity:0;transform:translateX(18px);transition:opacity .35s ease,transform .35s ease,color .2s ease,background .2s ease}
+header nav a:not([href="#contacto"])::after{display:none}
+header nav a:not([href="#contacto"]):active{background:rgba(0,199,60,.1);color:#00C73C}
+header nav a[href="#contacto"]{margin:26px 24px 0!important;padding:16px 20px!important;border-radius:12px!important;border-bottom:0;text-align:center;min-height:0}
+header.kd-open nav a{opacity:1;transform:none}
+header.kd-open nav a:nth-child(1){transition-delay:.06s}
+header.kd-open nav a:nth-child(2){transition-delay:.10s}
+header.kd-open nav a:nth-child(3){transition-delay:.14s}
+header.kd-open nav a:nth-child(4){transition-delay:.18s}
+header.kd-open nav a:nth-child(5){transition-delay:.22s}
+header.kd-open nav a:nth-child(6){transition-delay:.26s}
+header.kd-open nav a:nth-child(7){transition-delay:.30s}
+header.kd-open nav a:nth-child(8){transition-delay:.34s}
+html.kd-menu-open body{overflow:hidden}
+html.kd-menu-open .kd-wa{visibility:hidden}
+}
+@media (max-width:900px) and (prefers-reduced-motion:reduce){
+header nav,header nav a,.kd-backdrop,.kd-burger span{transition:none!important}
+}
+
+/* ===== Mejoras visuales para teléfono ===== */
+@media (max-width:640px){
+a,button{-webkit-tap-highlight-color:rgba(0,199,60,.22)}
+.kd-hero-btn,.kd-dx-btn,.kd-soc,.kd-arrow{transition:transform .15s ease,box-shadow .25s ease,border-color .25s ease}
+.kd-hero-btn:active,.kd-dx-btn:active,.kd-soc:active,.kd-arrow:active{transform:scale(.97)}
+.kd-member{padding:22px 10px 18px}
+.kd-email{font-size:9.5px;letter-spacing:-.1px}
+#simulador input[type=range]{height:36px}
+#simulador input[type=range]::-webkit-slider-thumb{width:28px;height:28px;margin-top:-11px}
+#simulador input[type=range]::-moz-range-thumb{width:22px;height:22px}
+}
 </style>
 
 </head>
@@ -382,7 +445,9 @@ section[id],#diagnostico{scroll-margin-top:72px}
 <div style="display:flex; align-items:center;">
 <img src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Kapital_Delta_Logo.png" alt="Kapital Delta" style="height:36px; width:auto; object-fit:contain;">
 </div>
-<nav style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;font-size:15px">
+<button class="kd-burger" id="kd-burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="kd-nav"><span></span><span></span><span></span></button>
+<div class="kd-backdrop" aria-hidden="true"></div>
+<nav id="kd-nav" style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;font-size:15px">
 <a href="#nosotros">Quiénes somos</a>
 <a href="#equipo">Equipo</a>
 <a href="#servicios">Servicios</a>
@@ -868,7 +933,10 @@ section[id],#diagnostico{scroll-margin-top:72px}
 </div>
 
 <footer style="border-top:1px solid #FFFFFF;padding:32px 24px;text-align:center;color:#FFFFFF;font-size:13px">
-Kapital Delta © 2026 Todos los derechos reservados.
+<div class="kd-foot">
+<span class="kd-foot-txt">Kapital Delta © 2026 Todos los derechos reservados.</span>
+<img class="kd-foot-logo" src="https://raw.githubusercontent.com/Adrian-2308/Pagina-Kapital-Delta-Imagenes/refs/heads/main/Logotipo%20Kapital%20Delta%20y%20Skandia.png" alt="Kapital Delta y Skandia" width="2170" height="725" loading="lazy">
+</div>
 </footer>
 </div>
 
@@ -1176,6 +1244,26 @@ function f(){h.classList.toggle('kd-stuck',window.scrollY>0&&h.getBoundingClient
 window.addEventListener('scroll',f,{passive:true});
 window.addEventListener('resize',f);
 f();
+})();
+</script>
+<script>
+/* Menú plegable */
+(function(){
+var h=document.querySelector('header'),b=document.getElementById('kd-burger'),nav=document.getElementById('kd-nav');
+if(!h||!b||!nav)return;
+var bd=h.querySelector('.kd-backdrop'),root=document.documentElement;
+function set(open){
+  if(open)nav.style.paddingTop=Math.round(h.getBoundingClientRect().bottom+8)+'px';
+  h.classList.toggle('kd-open',open);
+  root.classList.toggle('kd-menu-open',open);
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+}
+b.addEventListener('click',function(){set(!h.classList.contains('kd-open'));});
+if(bd)bd.addEventListener('click',function(){set(false);});
+nav.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'))set(false);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&h.classList.contains('kd-open')){set(false);b.focus();}});
+window.addEventListener('resize',function(){if(window.innerWidth>900)set(false);});
 })();
 </script>
 </body>
